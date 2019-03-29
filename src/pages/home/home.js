@@ -6,10 +6,18 @@ class Home extends React.Component{
     return (
       <div>
         <div>welcome</div>
-        <a href='#/profile'>go profile</a>
+        {/* pass params through url */}
+        <a href='#/profile/2'>go profile</a>
+        <div onClick={this.handler.bind(this)}>use router with function</div>
       </div>
     )
   }
+
+  handler(){
+    //pass params
+    this.props.history.push({pathname:'/profile', query:{aa:1}})
+  }
+  
 }
 
 export default Home

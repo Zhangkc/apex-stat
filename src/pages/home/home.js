@@ -1,15 +1,20 @@
 import React from 'react'
 import './home.css'
 
+import Header from './components/Header';
+import UserName from './components/UserName';
+
 class Home extends React.Component{
   render(h) {
-    return (
-      <div>
-        <div>welcome</div>
-        {/* pass params through url */}
-        <a href='#/profile/2'>go profile</a>
-        <div onClick={this.handler.bind(this)}>use router with function</div>
-      </div>
+    return (    
+        <div>
+          <Header />
+          <div>welcome</div>
+          <UserName />
+          {/* pass params through url */}
+          <a href='#/profile/2'>go profile</a>
+          <div onClick={this.handler.bind(this)}>use router with function</div>
+        </div>
     )
   }
 

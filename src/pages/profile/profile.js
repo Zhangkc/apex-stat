@@ -1,5 +1,6 @@
 import React from 'react'
 import './profile.css'
+//import { Button } from 'antd'
 
 export default class Profile extends React.Component{
   handler = function(e) {
@@ -15,10 +16,8 @@ export default class Profile extends React.Component{
   
   render(){
     return (
-      <div>
-        <h1>profile</h1>
-        <a href='#/'>return home</a>
-        <div onClick={this.handler.bind(this)}>use router with function</div>
+      <div className="profile-container">
+        
       </div>
     )
   }

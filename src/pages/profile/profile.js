@@ -1,6 +1,8 @@
 import React from 'react'
 import './profile.css'
 import { Layout, Menu } from 'antd';
+import Card from './card'
+import Player from './player'
 
 const { Header, Content, Footer } = Layout;
 
@@ -10,6 +12,7 @@ export default class Profile extends React.Component{
     this.state = {
       platform:this.props.match.params.platform,
       id:this.props.match.params.id,
+      data:null
     }
   }
 
@@ -30,15 +33,17 @@ export default class Profile extends React.Component{
       fetch(`/api/v1/player?platform=${this.state.platform}&name=${this.state.id}`,{
         method: 'GET',
         cache: 'no-cache',
-        headers:new Headers({
+        headers:{
           'Authorization':'eH1MzNoi04bjFVWGw0OnDXwtyzoNtlZ2FT7KA2_xTv8',
           'Content-Type': 'application/json'
-        }),
-        mode:'no-cors'
+        },
       }).then(res=>{
         return res.json()
       }).then(res=>{
-        console.log(res)
+        this.setState({
+          data:res
+        })
+
       },err=>{
         console.log(err)
       })
@@ -64,10 +69,21 @@ export default class Profile extends React.Component{
         </Menu>
       </Header>
       <Content style={{ padding: '0 50px' }}>
-        <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>Content</div>
+        <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+          {
+            this.state.data && <Player name={this.state.data.name} level={this.state.data.level}/>
+          }
+          
+          <div>{
+            this.state.data && this.state.data.legends && this.state.data.legends.map((item,index)=>{
+              return (<Card key={index} hero={item}/>)
+            })
+          }
+          </div>
+        </div>
       </Content>
       <Footer style={{ textAlign: 'center' }}>
-        apex-stat ©2018 Created by React
+        apex-stat ©2018 Created by KaiserZ
       </Footer>
     </Layout>
     )

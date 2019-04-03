@@ -1,0 +1,23 @@
+.player-container {
+  margin: 0 auto;
+  max-width: 1200px;
+  background: #292929;
+  margin-bottom: 24px;
+}
+
+.player-info{
+  display: flex;
+  padding: 1.2em 1.6em; 
+}
+
+.player-name{
+  color:#ffffff;
+  padding: 0;
+  margin: 0;
+}
+.player-career{
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 1.6em;
+  padding-bottom: 1.2em; 
+}
